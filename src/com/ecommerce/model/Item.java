@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +27,9 @@ public class Item {
 	@Column(name = "itemTotal")
 	private double itemTotal;
 	
+	@ManyToOne
+	@JoinColumn(name = "cart_id")
+	private Cart cart;
 	
 	/**
 	 * @param quantity
@@ -59,6 +64,12 @@ public class Item {
 	}
 	public void setItemTotal(double itemTotal) {
 		this.itemTotal = itemTotal;
+	}
+	public Cart getCart() {
+		return cart;
+	}
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 	
 }
